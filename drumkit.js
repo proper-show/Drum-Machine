@@ -1,85 +1,12 @@
 document.addEventListener('keydown', (event) => {
     makeSound(event.key)
-
-    if(event.key == "1") {
-        document.getElementById('1pad').classList.remove('pad')
-        document.getElementById('1pad').classList.add('active')
-    }
-    if(event.key == "2") {
-        document.getElementById('2pad').classList.remove('pad')
-        document.getElementById('2pad').classList.add('active')
-    }
-    if(event.key == "3") {
-        document.getElementById('3pad').classList.remove('pad')
-        document.getElementById('3pad').classList.add('active')
-    }
-    if(event.key == "4") {
-        document.getElementById('4pad').classList.remove('pad')
-        document.getElementById('4pad').classList.add('active')
-    }
-    if(event.key == "5") {
-        document.getElementById('5pad').classList.remove('pad')
-        document.getElementById('5pad').classList.add('active')
-    }
-    if(event.key == "6") {
-        document.getElementById('6pad').classList.remove('pad')
-        document.getElementById('6pad').classList.add('active')
-    }
-    if(event.key == "7") {
-        document.getElementById('7pad').classList.remove('pad')
-        document.getElementById('7pad').classList.add('active')
-    }
-    if(event.key == "8") {
-        document.getElementById('8pad').classList.remove('pad')
-        document.getElementById('8pad').classList.add('active')
-    }
-    if(event.key == "9") {
-        document.getElementById('9pad').classList.remove('pad')
-        document.getElementById('9pad').classList.add('active')
-    }
-    
-    
-})
+    getKeydownAnimation(event.key)
+})    
 
 document.addEventListener('keyup', (event) => {
-    if (event.key == "1") {
-        document.getElementById('1pad').classList.remove('active')
-        document.getElementById('1pad').classList.add('pad')
-    } if (event.key == "2") {
-        document.getElementById('2pad').classList.remove('active')
-        document.getElementById('2pad').classList.add('pad')
-    }
-    if (event.key == "3") {
-        document.getElementById('3pad').classList.remove('active')
-        document.getElementById('3pad').classList.add('pad')
-    }
-    if (event.key == "4") {
-        document.getElementById('4pad').classList.remove('active')
-        document.getElementById('4pad').classList.add('pad')
-    }
-    if (event.key == "5") {
-        document.getElementById('5pad').classList.remove('active')
-        document.getElementById('5pad').classList.add('pad')
-    }
-    if (event.key == "6") {
-        document.getElementById('6pad').classList.remove('active')
-        document.getElementById('6pad').classList.add('pad')
-    }
-    if (event.key == "7") {
-        document.getElementById('7pad').classList.remove('active')
-        document.getElementById('7pad').classList.add('pad')
-    }
-    if (event.key == "8") {
-        document.getElementById('8pad').classList.remove('active')
-        document.getElementById('8pad').classList.add('pad')
-    }
-    if (event.key == "9") {
-        document.getElementById('9pad').classList.remove('active')
-        document.getElementById('9pad').classList.add('pad')
-    }
+    getKeyupAnimation(event.key)
 })
-
-
+    
 
 let padArray = document.getElementsByClassName('pad')
 for (pad of padArray) {
@@ -90,6 +17,15 @@ function clickPad(event) {
     makeSound(event.target.textContent)
 }
 
+function getKeydownAnimation(key) {
+    document.getElementById(`${key}pad`).classList.remove('pad')
+    document.getElementById(`${key}pad`).classList.add('active')
+}
+
+function getKeyupAnimation(key) {
+    document.getElementById(`${key}pad`).classList.remove('active')
+    document.getElementById(`${key}pad`).classList.add('pad')
+}
   
 function makeSound(key) {
     switch (key) {
