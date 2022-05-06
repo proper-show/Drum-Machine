@@ -1,10 +1,13 @@
 document.addEventListener('keydown', (event) => {
     makeSound(event.key)
+    clearInterval(cycle)
+    resetPads(addClassNumber)
     getKeydownAnimation(event.key)
 })    
 
 document.addEventListener('keyup', (event) => {
     getKeyupAnimation(event.key)
+    
 })
     
 
@@ -21,10 +24,10 @@ function getKeydownAnimation(key) {
     document.getElementById(`${key}pad`).classList.remove('pad')
     document.getElementById(`${key}pad`).classList.add('active')
 }
-
 function getKeyupAnimation(key) {
     document.getElementById(`${key}pad`).classList.remove('active')
     document.getElementById(`${key}pad`).classList.add('pad')
+
 }
   
 function makeSound(key) {
@@ -76,3 +79,31 @@ function makeSound(key) {
         }
     }
 }
+
+let removeClassNumber = -2
+let addClassNumber = -1
+let cycle = setInterval(padAnimation, 1000, removeClassNumber, addClassNumber)
+
+function padAnimation() {
+    removeClassNumber++
+        if(removeClassNumber > 8){
+            removeClassNumber = -1
+        }
+        if(removeClassNumber !== -1) {
+            padArray[removeClassNumber].classList.remove('pad-animate')
+        }
+    addClassNumber++
+        if(addClassNumber > 8){
+            addClassNumber = -1
+        }
+        if(addClassNumber !== -1){
+            padArray[addClassNumber].classList.add('pad-animate') 
+        }  
+}
+
+function resetPads(num) {
+    padArray[num].classList.remove('pad-animate')
+}
+
+
+
